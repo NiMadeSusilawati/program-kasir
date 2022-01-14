@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    int p,b,k,j_m,j_d,harga_m,harga_d,diskon,total_pembayaran,d,harga_n;
+    int p,b,k,j_m,j_d,harga_m,harga_d,diskon,tambahan,total_pembayaran,d,harga_n,jumlah_lengkap;
     
     cout<<"=======>KASIR RUMAH MAKAN PASTI KENYANG<======="<<"\n\n";
     cout<<"\t----MENU----"<<"\n";
@@ -118,14 +118,29 @@ int main()
     }
     cout<<endl;
     harga_n=harga_m*j_m+harga_d*j_d;
+    jumlah_lengkap=j_m+j_d;
    if(harga_n>=50000){
-       diskon=harga_n*10/100;
+       if (jumlah_lengkap>=5){
+           tambahan=harga_n*5/100;
+           diskon=harga_n*10/100;
+        cout<<"Anda mendapatkan diskon sebanyak 15%\n";
+       }else{
+            diskon=harga_n*10/100;
        cout<<"Anda mendapatkan diskon sebanyak 10%\n";
+       }
    }
    else if (harga_n<50000){
-       diskon=harga_n*0;
+       if (jumlah_lengkap>=5){
+           tambahan=harga_n*5/100;
+           
+        cout<<"Anda mendapatkan diskon sebanyak 5%\n";
+       }else{
+            
+       cout<<"Anda tidak mendapatkan diskon\n";
+       }
    }
-    total_pembayaran=harga_n-diskon;
+        
+    total_pembayaran=harga_n-(diskon+tambahan);
         cout<<"Harga total : Rp."<<total_pembayaran<<"\n";
         cout<<"Jumlah uang : Rp.";
         cin>>b;
@@ -155,4 +170,4 @@ int main()
     cout<<"\nTERIMAKASIH TELAH BERKUNJUNG KE RUMAH MAKAN PASTI KENYANG\n";
     cout<<"   SILAHKAN BERKUNJUNG KEMBALI JIKA ANDA BERKENAN :)";
 }
-  
+
